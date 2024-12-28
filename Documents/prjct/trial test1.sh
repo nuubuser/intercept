@@ -7,6 +7,24 @@
 # Inside script.sh
 VERSION="1.5.0"
 
+# Tentukan tanggal kedaluwarsa dalam format YYYY-MM-DD
+expiration_date="2025-01-10"
+
+# Ambil tanggal saat ini dalam format YYYY-MM-DD
+current_date=$(date +%F)
+
+# Bandingkan tanggal saat ini dengan tanggal kedaluwarsa
+if [[ "$current_date" > "$expiration_date" ]]; then
+    echo "Expired $expiration_date."
+    exit 1
+else
+echo " "
+    echo "\033[32m$current_date\033[0m"
+    echo " "
+    echo "\033[32mTELEGRAM @EXCC24\033[0m"
+    echo " "
+fi
+
 
 
 
