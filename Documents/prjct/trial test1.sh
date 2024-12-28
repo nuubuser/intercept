@@ -1,6 +1,6 @@
 #!/bin/bash
 # Inside script.sh
-VERSION="1.4.0"
+VERSION="1.5.0"
 
 # Path untuk file lokal
 LOCAL_FILE="/data/local/excc24.sh"
