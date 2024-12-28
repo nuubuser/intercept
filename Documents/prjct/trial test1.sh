@@ -1,10 +1,81 @@
+#!/data/data/com.termux/files/usr/bin/bash
+#!/bin/bash
+# Inside script.sh
+VERSION="1.2.0"
+# Tentukan tanggal kedaluwarsa dalam format YYYY-MM-DD
+expiration_date="2025-01-10"
+
+# Ambil tanggal saat ini dalam format YYYY-MM-DD
+current_date=$(date +%F)
+
+# Bandingkan tanggal saat ini dengan tanggal kedaluwarsa
+if [[ "$current_date" > "$expiration_date" ]]; then
+    echo "Expired $expiration_date."
+    exit 1
+else
+echo " "
+    echo "\033[32m$current_date\033[0m"
+    echo " "
+    echo "\033[32mTELEGRAM @EXCC24\033[0m"
+    echo " "
+fi
+
+
+
+
+
+
+
+
+# Hash dari password yang benar
+correct_hash="9c679beba434bcc304b2d104225b475445f50efd52f7315b11a299382a8e07e9"
+
+# Meminta pengguna untuk memasukkan password
+echo -n "钥匙 / KEY: "
+read -s user_password
+echo
+
+# Menghitung hash dari password yang dimasukkan
+user_hash=$(echo -n "$user_password" | sha256sum | awk '{ print $1 }')
+
+# Memeriksa apakah hash yang dimasukkan cocok dengan hash yang benar
+if [ "$user_hash" == "$correct_hash" ]; then
+    
+echo "加载中 / LOADING..."
+sleep 4  # Loading selama 3 detik
+echo "结束 / FINISH"
+else
+    echo "Password salah. Akses ditolak!"
+    exit 1
+
+fi
+
+
+
+clear
+
+echo "
+
+                                                                
+                    ███████╗██╗  ██╗ ██████╗                    
+                    ██╔════╝╚██╗██╔╝██╔════╝                    
+                    █████╗   ╚███╔╝ ██║                         
+                    ██╔══╝   ██╔██╗ ██║                         
+                    ███████╗██╔╝ ██╗╚██████╗                    
+                    ╚══════╝╚═╝  ╚═╝ ╚═════╝                    
+                                                                        
+"
 echo  "\033[32m                   TELEGRAM @EXCC24"     
 echo " "
 echo "=============================================================="
 echo "             RUN BEFORE OPEN GAME "
 echo "             INTERCEPT ARENA BREAKOUT INTERNATIONAL 1.181"
 echo "             USE DECRYPT ESP"
-echo " expired date : $expired_date"
+echo " "
+echo "                   反馈 / FEEDBACK @buuzlighty"
+echo " "
+echo "             expired date : $expiration_date"
+echo "             current date : $current_date"
 echo "=============================================================="
 echo -e "\033[32m(keyboard Input) 1 开启拦截规则飞 (Turn On) @excc24 \033[0m"
 echo -e "\033[32m(Keyboard Input) 2 清除规则飞机群 (Turn Off) @excc24 \033[0m"
