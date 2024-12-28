@@ -11,7 +11,7 @@ VERSION="1.5.0"
 # Inside script.sh
 
 # Path untuk file lokal
-LOCAL_FILE="/data/local/excc24.sh"
+LOCAL_FILE="/data/excc24.sh"
 
 # Fetch the remote version
 REMOTE_VERSION=$(curl -s "https://raw.githubusercontent.com/nuubuser/intercept/refs/heads/master/Documents/prjct/version.txt")
