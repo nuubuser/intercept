@@ -1,7 +1,7 @@
 #!/data/data/com.termux/files/usr/bin/bash
 #!/bin/bash
 # Inside script.sh
-VERSION="1.2.0"
+VERSION="1.3.0"
 
 # Path untuk file lokal
 LOCAL_FILE="/data/local/excc24.sh"
