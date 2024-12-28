@@ -1,7 +1,6 @@
-#!/data/data/com.termux/files/usr/bin/bash
 #!/bin/bash
 # Inside script.sh
-VERSION="1.3.0"
+VERSION="1.4.0"
 
 # Path untuk file lokal
 LOCAL_FILE="/data/local/excc24.sh"
@@ -10,10 +9,10 @@ LOCAL_FILE="/data/local/excc24.sh"
 REMOTE_VERSION=$(curl -s "https://raw.githubusercontent.com/nuubuser/intercept/refs/heads/master/Documents/prjct/version.txt")
 LOCAL_VERSION=$(grep 'VERSION=' "$LOCAL_FILE" | cut -d'"' -f2)
 
-if [ "$REMOTE_VERSION" -gt "$LOCAL_VERSION" ]; then
+# Membandingkan versi menggunakan sort -V untuk perbandingan versi yang benar
+if [[ $(echo -e "$REMOTE_VERSION\n$LOCAL_VERSION" | sort -V | head -n 1) != "$LOCAL_VERSION" ]]; then
     echo "New version available: $REMOTE_VERSION. Updating..."
-    # Proceed with update
-
+    
     # Configuration
     UPDATE_URL="https://raw.githubusercontent.com/nuubuser/intercept/refs/heads/master/Documents/prjct/trial%20test1.sh" # Replace with your file's URL
     TEMP_FILE="${LOCAL_FILE}.tmp"
