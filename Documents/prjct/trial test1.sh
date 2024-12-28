@@ -10,7 +10,7 @@ LOCAL_FILE="/data/local/excc24.sh"
 REMOTE_VERSION=$(curl -s "https://raw.githubusercontent.com/nuubuser/intercept/refs/heads/master/Documents/prjct/version.txt")
 LOCAL_VERSION=$(grep 'VERSION=' "$LOCAL_FILE" | cut -d'"' -f2)
 
-if [ "$REMOTE_VERSION" != "$LOCAL_VERSION" ]; then
+if [ "$REMOTE_VERSION" -gt "$LOCAL_VERSION" ]; then
     echo "New version available: $REMOTE_VERSION. Updating..."
     # Proceed with update
 
