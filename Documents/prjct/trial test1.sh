@@ -9,10 +9,10 @@ LOCAL_FILE="/data/local/excc24.sh"
 REMOTE_VERSION=$(curl -s "https://raw.githubusercontent.com/nuubuser/intercept/refs/heads/master/Documents/prjct/version.txt")
 LOCAL_VERSION=$(grep 'VERSION=' "$LOCAL_FILE" | cut -d'"' -f2)
 
-# Membandingkan versi menggunakan sort -V untuk perbandingan versi yang benar
+# Membandingkan versi menggunakan sort -V
 if [[ $(echo -e "$REMOTE_VERSION\n$LOCAL_VERSION" | sort -V | head -n 1) != "$LOCAL_VERSION" ]]; then
     echo "New version available: $REMOTE_VERSION. Updating..."
-    
+
     # Configuration
     UPDATE_URL="https://raw.githubusercontent.com/nuubuser/intercept/refs/heads/master/Documents/prjct/trial%20test1.sh" # Replace with your file's URL
     TEMP_FILE="${LOCAL_FILE}.tmp"
@@ -109,6 +109,7 @@ echo "=============================================================="
 echo "             RUN BEFORE OPEN GAME "
 echo "             INTERCEPT ARENA BREAKOUT INTERNATIONAL 1.181"
 echo "             USE DECRYPT ESP"
+echo "             Version $VERSION"
 echo " "
 echo "                   反馈 / FEEDBACK @buuzlighty"
 echo " "
