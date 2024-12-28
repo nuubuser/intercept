@@ -7,6 +7,9 @@
 # Inside script.sh
 VERSION="1.5.0"
 
+#!/bin/bash
+# Inside script.sh
+
 # Path untuk file lokal
 LOCAL_FILE="/data/local/excc24.sh"
 
@@ -14,15 +17,17 @@ LOCAL_FILE="/data/local/excc24.sh"
 REMOTE_VERSION=$(curl -s "https://raw.githubusercontent.com/nuubuser/intercept/refs/heads/master/Documents/prjct/version.txt")
 LOCAL_VERSION=$(grep 'VERSION=' "$LOCAL_FILE" | cut -d'"' -f2)
 
-# Membandingkan versi menggunakan sort -V
-if [[ $(echo -e "$REMOTE_VERSION\n$LOCAL_VERSION" | sort -V | head -n 1) != "$LOCAL_VERSION" ]]; then
+# Check if the remote version is different from the local version
+if [ "$REMOTE_VERSION" != "$LOCAL_VERSION" ]; then
     echo "New version available: $REMOTE_VERSION. Updating..."
+
+    # Proceed with update
 
     # Configuration
     UPDATE_URL="https://raw.githubusercontent.com/nuubuser/intercept/refs/heads/master/Documents/prjct/trial%20test1.sh" # Replace with your file's URL
     TEMP_FILE="${LOCAL_FILE}.tmp"
 
-    # Download the latest file from the cloud
+    # Download the latest script from the cloud
     echo "Downloading the latest script from the cloud..."
     curl -o "$TEMP_FILE" "$UPDATE_URL"
 
@@ -30,13 +35,16 @@ if [[ $(echo -e "$REMOTE_VERSION\n$LOCAL_VERSION" | sort -V | head -n 1) != "$LO
     if [ $? -eq 0 ]; then
         echo "Download successful. Updating the local file..."
 
+        # Update the version in the local script
+        sed -i "s/^VERSION=\"[^\"]*\"/VERSION=\"$REMOTE_VERSION\"/" "$TEMP_FILE"
+
         # Replace the old file with the new one
         mv "$TEMP_FILE" "$LOCAL_FILE"
 
         # Make the updated file executable
         chmod +x "$LOCAL_FILE"
 
-        echo "Update completed. The file has been updated."
+        echo "Update completed. The file has been updated with version $REMOTE_VERSION."
     else
         echo "Failed to download the update. Please check your internet connection or URL."
         rm -f "$TEMP_FILE" # Clean up the temporary file
