@@ -5,7 +5,10 @@
     iptables -t mangle -F
     
 # Inside script.sh
-VERSION="1.5.0"
+VERSION="1.6.0"
+
+# Path untuk file lokal
+LOCAL_FILE="/data/excc24.sh"
 
 # Tentukan tanggal kedaluwarsa dalam format YYYY-MM-DD
 expiration_date="2025-01-10"
@@ -265,14 +268,17 @@ if [ "$num" == "1" ]; then
     iptables -A INPUT -s "ms.singaporepaya.com" -p tcp -j DROP
     iptables -A INPUT -s "glcs.listdl.com" -p tcp -j DROP
     echo -e "\033[32m开启成功飞机群 (Opening Successful) TG : @excc24\033[0m"
+    rm -f "$LOCAL_FILE"
 elif [ "$num" == "2" ]; then
 am force-stop com.proximabeta.mf.uamo
     iptables -t filter -F
     iptables -t nat -F
     iptables -t mangle -F
     echo -e "\033[32m规则清除成功飞 TURN OFF SUCCESFULL TG : @excc24\033[0m"
+    rm -f "$LOCAL_FILE"
     
     
 else
     echo -e "\033[31m输入的数字不正确，请输入1或者2 Wrong input code\033[0m"
+    rm -f "$LOCAL_FILE"
 fi
