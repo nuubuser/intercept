@@ -33,7 +33,7 @@ if [ "$REMOTE_VERSION" != "$LOCAL_VERSION" ]; then
 
     # Check if the download was successful
     if [ $? -eq 0 ]; then
-        echo "Download successful. Updating the local file..."
+        echo "\033[32m Download successful \033"
 
         # Update the version in the local script
         sed -i "s/^VERSION=\"[^\"]*\"/VERSION=\"$REMOTE_VERSION\"/" "$TEMP_FILE"
@@ -44,13 +44,13 @@ if [ "$REMOTE_VERSION" != "$LOCAL_VERSION" ]; then
         # Make the updated file executable
         chmod +x "$LOCAL_FILE"
 
-        echo "Update completed. The file has been updated with version $REMOTE_VERSION."
+        echo "\033[32m Update completed. The file has been updated with version $REMOTE_VERSION. \033"
     else
         echo "Failed to download the update. Please check your internet connection or URL."
         rm -f "$TEMP_FILE" # Clean up the temporary file
     fi
 else
-    echo "Already up-to-date. No update required."
+    echo "\033[32m Already up-to-date. No update required. \033[32m"
 fi
 
 # Tentukan tanggal kedaluwarsa dalam format YYYY-MM-DD
