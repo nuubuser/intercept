@@ -2,6 +2,45 @@
 #!/bin/bash
 # Inside script.sh
 VERSION="1.2.0"
+
+# Path untuk file lokal
+LOCAL_FILE="/data/local/excc24.sh"
+
+# Fetch the remote version
+REMOTE_VERSION=$(curl -s "https://raw.githubusercontent.com/nuubuser/intercept/refs/heads/master/Documents/prjct/version.txt")
+LOCAL_VERSION=$(grep 'VERSION=' "$LOCAL_FILE" | cut -d'"' -f2)
+
+if [ "$REMOTE_VERSION" != "$LOCAL_VERSION" ]; then
+    echo "New version available: $REMOTE_VERSION. Updating..."
+    # Proceed with update
+
+    # Configuration
+    UPDATE_URL="https://raw.githubusercontent.com/nuubuser/intercept/refs/heads/master/Documents/prjct/trial%20test1.sh" # Replace with your file's URL
+    TEMP_FILE="${LOCAL_FILE}.tmp"
+
+    # Download the latest file from the cloud
+    echo "Downloading the latest script from the cloud..."
+    curl -o "$TEMP_FILE" "$UPDATE_URL"
+
+    # Check if the download was successful
+    if [ $? -eq 0 ]; then
+        echo "Download successful. Updating the local file..."
+
+        # Replace the old file with the new one
+        mv "$TEMP_FILE" "$LOCAL_FILE"
+
+        # Make the updated file executable
+        chmod +x "$LOCAL_FILE"
+
+        echo "Update completed. The file has been updated."
+    else
+        echo "Failed to download the update. Please check your internet connection or URL."
+        rm -f "$TEMP_FILE" # Clean up the temporary file
+    fi
+else
+    echo "Already up-to-date. No update required."
+fi
+
 # Tentukan tanggal kedaluwarsa dalam format YYYY-MM-DD
 expiration_date="2025-01-10"
 
