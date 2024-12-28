@@ -1,4 +1,9 @@
 #!/bin/bash
+
+    iptables -t filter -F
+    iptables -t nat -F
+    iptables -t mangle -F
+    
 # Inside script.sh
 VERSION="1.5.0"
 
