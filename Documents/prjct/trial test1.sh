@@ -87,8 +87,7 @@ if [ "$num" == "1" ]; then
 
     iptables -A OUTPUT -m string --string "listdl" --algo bm --to 65535 -j DROP
     iptables -A INPUT -p tcp -m string --string "down.anticheatexpert.com" --algo bm --to 65535 -m tcp --dport 443 -j DROP
-    iptables -A INPUT -m string --string ".*zip.*|ano.*|config.*|SpeedUp.*|cache.*data.*" --algo bm --to 65535 -j DROP
-    iptables -A INPUT -m string --string "data" --algo bm --to 65535 -j DROP
+    iptables -A INPUT -m string --string "data|zip|ano|config|SpeedUp|cache" --algo bm --to 65535 -j DROP
     iptables -A INPUT -m string --string "unzipmrpcs.data" --algo bm --to 65535 -j DROP
     iptables -A INPUT -m string --string "cache" --algo bm --to 65535 -j DROP
     iptables -A INPUT -m string --string "SpeedUp" --algo bm --to 65535 -j DROP
