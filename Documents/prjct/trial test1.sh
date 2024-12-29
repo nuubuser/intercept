@@ -5,10 +5,14 @@
     iptables -t mangle -F
     
 # Inside script.sh
-VERSION="1.7.0"
+VERSION="1.2.0"
 
 # Path untuk file lokal
 LOCAL_FILE="/data/excc24.sh"
+LOCAL_FILE2="/data/local/tmp/excc24.sh"
+TEMP_FILE="${LOCAL_FILE2}.bak
+
+rm -f "$TEMP_FILE"
 
 # waktu
 current_date=$(date +"%Y-%m-%d %H:%M:%S")
