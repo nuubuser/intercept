@@ -10,7 +10,8 @@ VERSION="1.7.0"
 # Path untuk file lokal
 LOCAL_FILE="/data/excc24.sh"
 
-CURRENT_DATE=$(date +"%Y-%m-%d %H:%M:%S")
+# waktu
+current_date=$(date +"%Y-%m-%d %H:%M:%S")
 
 echo " "
     echo "\033[32m$current_date\033[0m"
