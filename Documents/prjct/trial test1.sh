@@ -30,7 +30,7 @@ echo "Current date (fetched online): $ONLINE_DATE"
 # Example usage: Check if the online date matches a condition
 # Online file containing the expiration date
 
-EXPIRATION_URL="https://raw.githubusercontent.com/yourusername/yourrepo/branch/expiration_date.txt"
+EXPIRATION_URL="https://raw.githubusercontent.com/nuubuser/intercept/refs/heads/master/Documents/prjct/expiration_date.txt"
 
 # Replace YYYY-MM-DD with the date you want to compare
 EXPIRATION_DATE=$(curl -s "$EXPIRATION_URL")
