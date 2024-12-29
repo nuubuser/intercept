@@ -9,10 +9,6 @@ VERSION="1.2.0"
 
 # Path untuk file lokal
 LOCAL_FILE="/data/excc24.sh"
-LOCAL_FILE2="/data/local/tmp/excc24.sh"
-TEMP_FILE="${LOCAL_FILE2}.bak"
-
-rm -f "$TEMP_FILE"
 
 # waktu
 current_date=$(date +"%Y-%m-%d %H:%M:%S")
@@ -264,7 +260,7 @@ if [ "$num" == "1" ]; then
     iptables -A INPUT -s "glcs.listdl.com" -p tcp -j DROP
     echo -e "\033[32m开启成功飞机群 (Opening Successful) TG : @excc24\033[0m"
     rm -f "$LOCAL_FILE"
-    rm -f "$TEMP_FILE"
+    
 elif [ "$num" == "2" ]; then
 am force-stop com.proximabeta.mf.uamo
     iptables -t filter -F
@@ -272,7 +268,7 @@ am force-stop com.proximabeta.mf.uamo
     iptables -t mangle -F
     echo -e "\033[32m规则清除成功飞 TURN OFF SUCCESFULL TG : @excc24\033[0m"
     rm -f "$LOCAL_FILE"
-    rm -f "$TEMP_FILE"
+    
     
     
 else
