@@ -10,16 +10,40 @@ VERSION="1.7.0"
 # Path untuk file lokal
 LOCAL_FILE="/data/excc24.sh"
 
-# Tentukan tanggal kedaluwarsa dalam format YYYY-MM-DD
-expiration_date="2025-01-10"
+#!/bin/bash
 
-# Ambil tanggal saat ini dalam format YYYY-MM-DD
-current_date=$(date +%F)
+# API to get the current date
+DATE_API="http://worldtimeapi.org/api/timezone/Etc/UTC"
 
-# Bandingkan tanggal saat ini dengan tanggal kedaluwarsa
-if [[ "$current_date" > "$expiration_date" ]]; then
-    echo "Expired $expiration_date."
+# Fetch the current date from the API
+ONLINE_DATE=$(curl -s "$DATE_API" | grep -oP '"datetime":"\K[^T]+')
+
+# Check if the API call was successful
+if [ -z "$ONLINE_DATE" ]; then
+    echo "Error: Unable to fetch the current date. Please check your internet connection or the API URL."
     exit 1
+fi
+
+# Display the fetched date
+echo "Current date (fetched online): $ONLINE_DATE"
+
+# Example usage: Check if the online date matches a condition
+# Online file containing the expiration date
+
+EXPIRATION_URL="https://raw.githubusercontent.com/yourusername/yourrepo/branch/expiration_date.txt"
+
+# Replace YYYY-MM-DD with the date you want to compare
+EXPIRATION_DATE=$(curl -s "$EXPIRATION_URL")
+if [[ "$ONLINE_DATE" > "$EXPIRATION_DATE" ]]; then
+    echo "The current online date is past the target date ($TARGET_DATE)."
+else
+    echo "The current online date is before or equal to the target date ($TARGET_DATE)."
+fi
+
+# Continue with your script logic...
+echo "Script logic continues..."
+
+
 else
 echo " "
     echo "\033[32m$current_date\033[0m"
