@@ -10,39 +10,7 @@ VERSION="1.7.0"
 # Path untuk file lokal
 LOCAL_FILE="/data/excc24.sh"
 
-#!/bin/bash
-
-# API to get the current date
-DATE_API="http://worldtimeapi.org/api/timezone/Etc/UTC"
-
-# Fetch the current date from the API
-ONLINE_DATE=$(curl -s "$DATE_API" | grep -oP '"datetime":"\K[^T]+')
-
-# Check if the API call was successful
-if [ -z "$ONLINE_DATE" ]; then
-    echo "Error: Unable to fetch the current date. Please check your internet connection or the API URL."
-    exit 1
-fi
-
-# Display the fetched date
-echo "Current date (fetched online): $ONLINE_DATE"
-
-# Example usage: Check if the online date matches a condition
-# Online file containing the expiration date
-
-EXPIRATION_URL="https://raw.githubusercontent.com/nuubuser/intercept/refs/heads/master/Documents/prjct/expiration_date.txt"
-
-# Replace YYYY-MM-DD with the date you want to compare
-EXPIRATION_DATE=$(curl -s "$EXPIRATION_URL")
-if [[ "$ONLINE_DATE" > "$EXPIRATION_DATE" ]]; then
-    echo "The current online date is past the target date ($TARGET_DATE)."
-else
-    echo "The current online date is before or equal to the target date ($TARGET_DATE)."
-fi
-
-# Continue with your script logic...
-echo "Script logic continues..."
-
+CURRENT_DATE=$(date +"%Y-%m-%d %H:%M:%S")
 
 else
 echo " "
