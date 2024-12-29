@@ -12,7 +12,7 @@ LOCAL_FILE="/data/excc24.sh"
 
 CURRENT_DATE=$(date +"%Y-%m-%d %H:%M:%S")
 
-fi
+
 
 echo " "
     echo "\033[32m$current_date\033[0m"
