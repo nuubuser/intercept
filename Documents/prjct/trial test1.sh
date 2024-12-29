@@ -5,7 +5,7 @@
     iptables -t mangle -F
     
 # Inside script.sh
-VERSION="1.2.1"
+VERSION="1.2.0"
 
 # Path untuk file lokal
 LOCAL_FILE="/data/excc24.sh"
